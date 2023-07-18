@@ -60,10 +60,10 @@ You can use the model for inference tasks like question-answering and medical di
 
 from transformers import pipeline
 
-qa_pipeline = pipeline("question-answering", model="medalpaca/medalpaca-13b", tokenizer="medalpaca/medalpaca-13b")
+pl = pipeline("text-generation", model="medalpaca/medalpaca-13b", tokenizer="medalpaca/medalpaca-13b")
 question = "What are the symptoms of diabetes?"
 context = "Diabetes is a metabolic disease that causes high blood sugar. The symptoms include increased thirst, frequent urination, and unexplained weight loss."
-answer = qa_pipeline({"question": question, "context": context})
+answer = pl(f"Context: {context}\n\nQuestion: {question}\n\nAnswer: ")
 print(answer)
 ```
 
